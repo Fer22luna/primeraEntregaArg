@@ -2,6 +2,8 @@
 package primeraEntregaArg.entidades;
 
 import java.util.List;
+import primeraEntregaArg.persistencia.EspecialidadDAO;
+import primeraEntregaArg.persistencia.TecnicoDAO;
 
 
 public class RRHH {
@@ -9,20 +11,27 @@ public class RRHH {
     
     //El área de RRHH se encarga de realizar las altas, bajas y modificaciones de los técnicos que se
     //encargan de resolver los incidentes reportados.
-    //Es una servicio de tecnicos
+    //Es una servicio para tecnicos tecnicos
     
-      
+     private final EspecialidadDAO especialidadDao;
+     private final TecnicoDAO tecnicoDao;
+     
+    public RRHH() {
+        this.especialidadDao = new EspecialidadDAO();
+        this.tecnicoDao = new TecnicoDAO();
+    }
 
     
-    public Tecnico altaTecnico(String nombre,  List<String> especialidades, Contacto contacto ){
+    public Tecnico altaTecnico(String nombreTecnico,  List<Especialidad> especialidades, String telefono,String email){
         
         Tecnico tecnico = new Tecnico();
         
-        tecnico.setNombre(nombre);
+        tecnico.setEmail(email);
+        tecnico.setTelefono(telefono);
         tecnico.setEspecialidades(especialidades);
-        tecnico.setContacto(contacto);
+        tecnico.setNombre(nombreTecnico);
         
-        //repositorioTecnico.save(tecnico);
+        tecnicoDao.guardar(tecnico);
         
         return tecnico;
     }
@@ -30,28 +39,39 @@ public class RRHH {
     
     public void bajaTecnico(String id){
         
-        // le doy de baja por ID
+        Tecnico tecnicoEliminar = buscarTecnicoPorId(id);
+        
+        tecnicoDao.eliminar(tecnicoEliminar);
+        
+        System.out.println("El tecnico se ha eliminado correctamente");
     }
     
-    public void modificarTenico(String id, String nombre,  List<String> especialidades, Contacto contacto ){
+    public void modificarTenico(String id, List<Especialidad> especialidades,String email,String telefono){
         
-        // repositorio buscar por id
+        Tecnico tecnicoModificar = buscarTecnicoPorId(id);
         
-        // luego modifico
+        tecnicoModificar.setEmail(email);
+        tecnicoModificar.setTelefono(telefono);
+        tecnicoModificar.setEspecialidades(especialidades);
         
+        tecnicoDao.guardar(tecnicoModificar);
+    }
+   
+    
+    public Tecnico buscarTecnicoPorId(String id){
+        
+        Tecnico tecnico = tecnicoDao.buscarPorId(id);
+        
+        return tecnico;
     }
     
-    public void emitirReportes(){
+    
+        public void emitirReportes(){
         
-        //  List<Incidente> listaIncidente = repositorioIncidente.findAll();
-        
-       
-        
-
+            
+      
         
     } 
-    
-    
     
     
     
