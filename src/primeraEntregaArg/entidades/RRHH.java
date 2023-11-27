@@ -66,13 +66,19 @@ public class RRHH {
     }
     
     
-        public void emitirReportes(){
+    public void emitirReportes(){
         
-            
-      
-        
-    } 
-    
-    
-    
+         List<Tecnico> listaTecnicos = tecnicoDao.listarTodos();
+         
+         for(Tecnico aux : listaTecnicos){
+             if(aux.getIncidenteAsignado().isEmpty()){
+                 System.out.println("El tecnico :"+ aux.getId()+ " no tiene incidentes asignados");
+             } else {
+                 System.out.println("El tecnico :"+ aux.getId() + " con los sigueintes incidentes");
+                 for(Incidente incidente : aux.getIncidenteAsignado()){
+                     System.out.println("Incidente con id  : "+ incidente.getId() + " y estado :"+ incidente.getEstado().name());
+                 }
+             }
+         }
+    }
 }

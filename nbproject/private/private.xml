@@ -3,15 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraentregaarg/PrimeraEntregaArg.java</file>
+            <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/persistencia/TipoProblemaDAO.java</file>
             <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/entidades/TipoProblema.java</file>
             <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/entidades/MesaDeAyuda.java</file>
             <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/entidades/Tecnico.java</file>
+            <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/persistencia/EspecialidadDAO.java</file>
             <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/entidades/Servicio.java</file>
             <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/entidades/RRHH.java</file>
             <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/entidades/Incidente.java</file>
             <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/entidades/Especialidad.java</file>
             <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/entidades/Cliente.java</file>
+            <file>file:/home/fernando/NetBeansProjects/primeraEntregaArg/src/primeraEntregaArg/persistencia/TecnicoDAO.java</file>
         </group>
     </open-files>
 </project-private>

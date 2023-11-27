@@ -26,13 +26,13 @@ public class Incidente {
     private String id;
     
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Cliente cliente;
     
     @ManyToMany
-    @JoinTable( name = "incidente_tipoProblema",
+    @JoinTable( name = "incidente_tipoproblema",
     joinColumns = @JoinColumn(name = "incidente_id"),
-    inverseJoinColumns = @JoinColumn(name = "tipoProblema_id"))
+    inverseJoinColumns = @JoinColumn(name = "tipoproblema_id"))
     private List<TipoProblema> tipoProblema;
     @Column
     private EstadoIncidente estado;
@@ -41,9 +41,10 @@ public class Incidente {
     @Temporal(TemporalType.DATE)
     private Date fechaResolucion;
     
-    @OneToOne
-    @JoinColumn(name = "tecnico_id")
-    private Tecnico tecnicoAsignado;
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id", referencedColumnName = "id")
+    private Tecnico tecnico;
+    
     
     @Column
     private boolean complejo;
@@ -104,11 +105,11 @@ public class Incidente {
     }
 
     public Tecnico getTecnicoAsignado() {
-        return tecnicoAsignado;
+        return tecnico;
     }
 
-    public void setTecnicoAsignado(Tecnico tecnicoAsignado) {
-        this.tecnicoAsignado = tecnicoAsignado;
+    public void setTecnicoAsignado(Tecnico tecnico) {
+        this.tecnico = tecnico;
     }
 
     public boolean isComplejo() {

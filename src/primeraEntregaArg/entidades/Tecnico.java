@@ -2,7 +2,6 @@
 package primeraEntregaArg.entidades;
 
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,15 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-//import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Tecnico {
     
     @Id
     @GeneratedValue(generator = "uuid")
-//    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     
     @Column(nullable = false)
@@ -38,12 +36,12 @@ public class Tecnico {
     @Column
     private String email;
     
-   @OneToOne(mappedBy = "tecnicoAsignado", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Incidente incidenteAsignado;
+    @OneToMany(fetch=FetchType.EAGER)
+    private List<Incidente> incidentes;
     
 
     public Tecnico() {
-        this.incidenteAsignado = null;
+        this.incidentes = null;
     }
 
     public String getId() {
@@ -86,12 +84,12 @@ public class Tecnico {
         this.email = email;
     }
 
-    public Incidente getIncidenteAsignado() {
-        return incidenteAsignado;
+    public List<Incidente> getIncidenteAsignado() {
+        return incidentes;
     }
 
-    public void setIncidenteAsignado(Incidente incidenteAsignado) {
-        this.incidenteAsignado = incidenteAsignado;
+    public void setIncidenteAsignado(List<Incidente> incidentes) {
+        this.incidentes = incidentes;
     }
 
     

@@ -53,16 +53,17 @@ public class MesaDeAyuda {
         
          Tecnico tecnicoElegido = listaDisponible.get(0);
         
-        Incidente incidente = new Incidente();
+          Incidente incidente = new Incidente();
         
           incidente.setCliente(cliente);
+          
           incidente.setTecnicoAsignado(tecnicoElegido);
           incidente.setFechaCreacion(fechaCreacion);
           incidente.setFechaResolucion(fechaResolucion(fechaCreacion));
           incidente.setEstado(EstadoIncidente.asignado);
-
           // Le asignamos al tecnicoElegido el incidente
-          tecnicoElegido.setIncidenteAsignado(incidente);
+          tecnicoElegido.getIncidenteAsignado().add(incidente);
+          tecnicoElegido.setIncidenteAsignado(tecnicoElegido.getIncidenteAsignado());
           // Asigna al Cliente que el incidente esta en proceso
           cliente.getIncidente().add(incidente);
           
@@ -76,8 +77,7 @@ public class MesaDeAyuda {
         
         
             Especialidad especialidad = especialidadDao.buscarEspecialidadPorProblema(tipoProblema);        
-            List<Tecnico> tecnicosDisponibles = tecnicoDao.buscarTecnicosPorEspecialidad(especialidad);
-                        
+            List<Tecnico> tecnicosDisponibles = tecnicoDao.buscarTecnicosPorEspecialidad(especialidad);           
             return tecnicosDisponibles;
             
     }
@@ -109,10 +109,13 @@ public class MesaDeAyuda {
     public void mandarEmail(Cliente cliente){
         
         System.out.println("Mensaje enviado al numero "+ cliente.getCuit());
+               
+    }
+    
+    public void colchonDeHoras(Tecnico tecnico){
         
         
     }
-    
     
     
 }
